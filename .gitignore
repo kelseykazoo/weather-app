@@ -1,0 +1,15 @@
+# Ignore PyInstaller output
+dist/
+build/
+__pycache__/
+*.spec
+
+# Python env
+.venv/
+.env/
+
+# macOS junk
+.DS_Store
+
+# API config
+config.py
