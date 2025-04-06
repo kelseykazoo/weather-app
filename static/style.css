@@ -1,0 +1,125 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    text-align: center;
+    color: #fff;
+  }
+  
+  body {
+    font-family: 'Helvetica', sans-serif;
+    background: linear-gradient(to bottom, #0f9b8e, #1e3c72); 
+    background-attachment: fixed; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    color: #fff;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  form {
+    margin: 1.5rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+  
+  input[type="text"] {
+    padding: 0.6rem;
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+    min-width: 200px;
+    max-width: 80vw;
+  }
+  
+  button {
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    border: none;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    color: white;
+    cursor: pointer;
+  }
+    
+  button:hover {
+    background-color: #436edb;
+  }
+  
+  p {
+    font-size: 1.25rem;
+  }
+  
+  img {
+    height: 60px;
+    width: 60px;
+    vertical-align: middle;
+  }
+  
+  body.clear {
+    background: linear-gradient(to bottom, #87cefa, #ffffff);
+  }
+  
+  body.rain {
+    background: linear-gradient(to bottom, #4b79a1, #283e51);
+  }
+  
+  body.clouds {
+    background: linear-gradient(to bottom, #d7d2cc, #304352);
+  }
+  
+  body.snow {
+    background: linear-gradient(to bottom, #e6dada, #274046);
+  }
+  
+  body.mist {
+    background: linear-gradient(to bottom, #636363, #a2ab58);
+  }
+  
+  body.few {
+    background: linear-gradient(to bottom, #d3cce3, #e9e4f0);
+  }
+  
+  body.scattered {
+    background: linear-gradient(to bottom, #ccc, #888);
+  }
+  
+  body.default {
+    background: linear-gradient(to bottom, #999, #555);
+  }
+  
+  #weather-animation {
+    width: 300px;
+    height: 300px;
+    margin: 1rem auto;
+  }
+  
+  @media (max-width: 600px) {
+    #weather-animation {
+      width: 200px;
+      height: 200px;
+    }
+  
+    input[type="text"],
+    button {
+      width: 100%;
+      font-size: 1rem;
+    }
+  
+    form {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  

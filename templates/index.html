@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://unpkg.com/lottie-web/build/player/lottie.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+</head>
+
+<body class="{{ weather_class }}">
+    <form method="POST" id="weather-form">
+        <input type="text" name="city" id="city-input" placeholder="Enter a city">
+        <button type="submit">Search</button>
+    </form>
+    
+    <script>
+
+        if (!localStorage.getItem("autoLocated")) {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+              const lat = position.coords.latitude;
+              const lon = position.coords.longitude;
+      
+              fetch(`/autoweather?lat=${lat}&lon=${lon}`)
+                .then(response => response.json())
+                .then(data => {
+                  if (data.city) {
+                    localStorage.setItem("autoLocated", "true"); // ✅ mark as done
+                    document.getElementById("city-input").value = data.city;
+                    document.getElementById("weather-form").submit();
+                  }
+                });
+            });
+          }
+        }
+      </script>
+      
+      
+
+    <div id="weather-animation" style="width: 200px; height: 200px; margin: auto;"></div>
+    <script>
+        var animationPath = "";
+    
+        {% if weather_class == 'cloudy' %}
+            animationPath = "{{ url_for('static', filename='animations/cloudy.json') }}";
+        {% elif weather_class == 'clouds' %}
+            animationPath = "{{ url_for('static', filename='animations/cloudy.json') }}";
+        {% elif weather_class == 'mist' %}
+            animationPath = "{{ url_for('static', filename='animations/mist.json') }}";
+        {% elif weather_class == 'rain' %}
+            animationPath = "{{ url_for('static', filename='animations/rain.json') }}";
+        {% elif weather_class == 'scattered' %}
+            animationPath = "{{ url_for('static', filename='animations/scattered.json') }}";
+        {% elif weather_class == 'snow' %}
+            animationPath = "{{ url_for('static', filename='animations/snow.json') }}";
+        {% elif weather_class == 'sunny' or weather_class == 'clear' %}
+            animationPath = "{{ url_for('static', filename='animations/sunny.json') }}";
+        {% endif %}
+    
+        if (animationPath) {
+            lottie.loadAnimation({
+                container: document.getElementById('weather-animation'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: animationPath
+            });
+        }
+    </script>
+
+    {% if temp %}
+        <p>{{ emoji }} {{ city }}: {{ temp }}°F, {{ weather }}</p>
+    {% else %}
+        <p>Weather not available.</p>
+    {% endif %}
+</body>
+</html>
+
