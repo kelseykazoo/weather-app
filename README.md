@@ -3,6 +3,12 @@
 This is a web-based weather application built with **Python**, **Flask**, and styled using **CSS**. It allows users to enter a city name and get current weather information using the OpenWeatherMap API.
 
 ---
+## 🚀 Live Demo
+
+Check out the live version of the weather app here:  
+👉 [https://weather-app-aja9.onrender.com](https://weather-app-aja9.onrender.com)
+
+---
 
 ## 🛠 Features
 
